@@ -10,6 +10,7 @@ class Post < ActiveRecord::Base
 
 # end
 # # #Add the geocoder gem
+#http://www.rubygeocoder.com/
 
 #Add a map to the top of the root page
 
