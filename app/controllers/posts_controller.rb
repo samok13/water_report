@@ -1,4 +1,7 @@
 class PostsController < ApplicationController
+  
+
+
   def index
     @posts = Post.all
   end
@@ -33,7 +36,7 @@ class PostsController < ApplicationController
       flash[:Success] = "Your water issue has been updated."
       redirect_to root_path
     else
-      render :edit
+      render root_path
     end
   end
 
@@ -51,7 +54,7 @@ class PostsController < ApplicationController
   private
 
   def whitelist_post_params
-    params.require(:post).permit(:issue, :name, :comment)
+    params.require(:post).permit(:issue, :name, :location, :comment)
   end
 
 end

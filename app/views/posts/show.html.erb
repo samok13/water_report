@@ -1,18 +1,41 @@
+<!DOCTYPE html>
+
 <%- model_class = Post -%>
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
 </div>
 
+
+
+
+<script>
+  
+  var $map = $('#map');
+  var longitude = $map.data('longitude');
+  var longitude = $map.attr('data-longitude');
+  var latitude = $map.data('latitude');
+  var latitude = $map.attr('data-latitude');
+​
+  // google maps api code here
+  
+​
+</script>
+
+
+
+
 <dl class="dl-horizontal">
   <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
   <dd><%= @post.name %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:location) %>:</strong></dt>
+  <dd><%= @post.location %></dd>
   <dt><strong><%= model_class.human_attribute_name(:issue) %>:</strong></dt>
   <dd><%= @post.issue %></dd>
   <dt><strong><%= model_class.human_attribute_name(:comment) %>:</strong></dt>
   <dd><%= @post.comment %></dd>
 </dl>
 
-<%= link_to t('.back', :default => t("helpers.links.back")),
+<%= link_to t('.back', :default => t("helpers.links.home")),
               posts_path, :class => 'btn btn-default'  %>
 <%= link_to t('.edit', :default => t("helpers.links.edit")),
               edit_post_path(@post), :class => 'btn btn-default' %>

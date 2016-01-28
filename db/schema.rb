@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(version: 20160127172044) do
 
   create_table "posts", force: :cascade do |t|
     t.string   "name"
+    t.string   "location"
     t.string   "issue"
     t.string   "comment"
     t.datetime "created_at", null: false

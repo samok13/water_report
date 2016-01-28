@@ -1,12 +1,43 @@
 <%- model_class = Post -%>
 <div class="page-header badge">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+  <h1>Water Report</h1>
 </div>
+
+<!--Adding google map-->
+
+  <head>
+    <style type="text/css">
+      html, body { height: 100%; margin: 0; padding: 0; }
+      #map { height: 50%; }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script type="text/javascript">
+
+var map;
+function initMap() {
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: 43.0161, lng: -83.705521},
+    zoom: 12
+  });
+}
+
+  </script>
+    <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBw5rYmVVhSo-HpnaMGbnpt9XNK6qxNGtI&callback=initMap">
+    </script>
+  </body>
+
+
+<!--Regular table-->
+<br>
 <table class="table table-striped">
   <thead>
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:name) %></th>
+      <th><%= model_class.human_attribute_name(:location) %></th>
       <th><%= model_class.human_attribute_name(:issue) %></th>
       <th><%= model_class.human_attribute_name(:comment) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
@@ -18,6 +49,7 @@
       <tr>
         <td><%= link_to post.id, post_path(post) %></td>
         <td><%= post.name %></td>
+        <td><%= post.location %></td>
         <td><%= post.issue %></td>
         <td><%= post.comment %></td>
         <td><%=l post.created_at %></td>
